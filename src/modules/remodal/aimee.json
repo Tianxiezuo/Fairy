@@ -1,0 +1,15 @@
+{
+  "name": "remodal",
+  "version": "1.0.0",
+  "description": "Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.",
+  "author": "gavinning",
+  "keywords": [
+    "remodal",
+    "dialog"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aimeejs/remodal.git",
+    "bugs": "https:/github.com/aimeejs/remodal/issues"
+  }
+}

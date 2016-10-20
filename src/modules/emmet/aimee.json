@@ -1,0 +1,16 @@
+{
+  "name": "emmet",
+  "version": "1.0.0",
+  "main": "emmet.js",
+  "description": "create dom like emmet",
+  "author": "gavinning",
+  "keywords": [
+    "emmet",
+    "create dom like emmet"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aimeejs/emmet.git",
+    "bugs": "https:/github.com/Aimeejs/emmet/issues"
+  }
+}

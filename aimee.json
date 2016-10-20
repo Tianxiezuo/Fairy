@@ -1,0 +1,27 @@
+{
+  "name": "fairy",
+  "version": "0.1.0",
+  "description": "",
+  "author": "",
+  "keywords": "",
+  "dependencies": {
+    "aimee": "~2.0.1",
+    "emmet": "~1.0.0",
+    "is": "~1.0.0",
+    "extend": "~1.0.0",
+    "guid": "~1.0.0",
+    "config": "~2.1.2",
+    "router": "~2.0.0",
+    "class": "~2.1.0",
+    "pm": "~2.0.0",
+    "app": "~2.1.4",
+    "page": "~2.1.3",
+    "mock": "~1.0.0",
+    "autoscreen": "~2.1.0",
+    "base": "~1.1.0",
+    "loading": "~1.1.0",
+    "reset": "~1.0.3",
+    "zepto": "~1.0.1",
+    "remodal": "~1.0.0"
+  }
+}

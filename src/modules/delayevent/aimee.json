@@ -1,0 +1,16 @@
+{
+  "name": "delayevent",
+  "version": "1.0.0",
+  "description": "延迟事件执行，提升性能，常用于如resize, onscroll",
+  "author": "gavinning",
+  "keywords": [
+    "延迟事件",
+    "delay event",
+    "delayevent"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aimeejs/delayevent.git",
+    "bugs": "https:/github.com/Aimeejs/delayevent/issues"
+  }
+}

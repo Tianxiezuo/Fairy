@@ -1,0 +1,35 @@
+{
+  "name": "aimee",
+  "aimee": "app",
+  "description": "Aimee框架",
+  "main": "aimee.js",
+  "version": "2.0.1",
+  "scripts": {
+    "test": "aimee -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aimeejs/aimee.git"
+  },
+  "keywords": [
+    "aimee"
+  ],
+  "author": "gavinning",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Aimeejs/aimee/issues"
+  },
+  "homepage": "https://github.com/Aimeejs/aimee",
+  "dependencies": {
+      "is": "^1.0.0",
+      "extend": "^1.0.0",
+      "class": "^2.0.0",
+      "pm": "^2.0.0",
+      "app": "^2.0.0",
+      "page": "^2.0.0",
+      "guid": "^1.0.0",
+      "router": "^2.0.0",
+      "config": "^2.0.0",
+      "emmet": "^1.0.0"
+  }
+}
