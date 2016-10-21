@@ -93,7 +93,7 @@ class list extends App {
         this.find('.grid-item').css('width', columnWidth);
     }
 
-    // 初始化销毁瀑布流
+    // 初始化瀑布流
     initMasonry() {
         this.calcOptions()
         this.grid.imagesLoaded(() => {
