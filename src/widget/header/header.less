@@ -1,3 +1,66 @@
 .lincoapp-header{
+    position: relative;
+    padding: 0 20px;
+    .box();
+    .shadow(0 1px 8px 4px rgba(0,0,0,.2));
 
+    .logo{
+        height: 50px;
+        overflow: hidden;
+        position: relative;
+        z-index: 100;
+        background: #fff;
+
+        img{
+            height: 100%;
+        }
+    }
+
+    .imenu{
+        display: none;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        z-index: 200;
+        right: 0;
+        top: 0;
+        background: url(../images/icon-menu.png) no-repeat center;
+        background-size: 40% auto;
+        cursor: pointer;
+        transition: background-color 200ms cubic-bezier(0.1, 0.93, 0.53, 1.01);
+    }
+}
+
+@media screen and (max-width: 630px) {
+
+    .lincoapp-header{
+        display: block;
+        padding: 0 10px;
+        margin-bottom: 10px;
+
+        height: 50px;
+        transition: height 360ms cubic-bezier(0.1, 0.93, 0.53, 1.01);
+
+        &.showmenu{
+            height: 50+168px;
+
+            .imenu{
+                background-color: rgba(0,0,0,0.12);
+            }
+        }
+
+        .imenu{
+            display: block;
+        }
+
+        .lincoapp-nav{
+            width: 100%;
+            .box-sizing();
+            position: absolute;
+            z-index: 10;
+            left: 0;
+            bottom: 0;
+            padding: 0 10px;
+        }
+    }
 }

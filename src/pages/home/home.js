@@ -29,7 +29,9 @@ class home extends Page {
     }
 
     prerender(data) {
-        this.exports('list')
+        this.exports('header')
+        // this.exports('list')
+        this.exports('picture')
     }
 
     postrender(data) {

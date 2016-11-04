@@ -7,6 +7,7 @@
  */
 
 import App from 'app';
+import tree from 'tree';
 import template from 'list.jade';
 import DelayEvent from 'delayevent';
 
@@ -27,7 +28,7 @@ class list extends App {
             gutter: 10
         };
         // 默认Dialog弹层
-        this.dialog = aimee.$('img.pic').remodal();
+        // this.dialog = aimee.$('img.pic').remodal();
     }
 
     prerender(app) {
@@ -36,8 +37,9 @@ class list extends App {
         this.bind({
             'click@.pic': function(){
                 let url = this.getAttribute('data-src');
-                app.dialog.$modal.attr('src', url);
-                app.dialog.open();
+                tree.fire('list.imageClick', url);
+                // app.dialog.$modal.attr('src', url);
+                // app.dialog.open();
             }
         })
     }

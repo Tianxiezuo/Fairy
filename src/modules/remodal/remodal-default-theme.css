@@ -67,6 +67,14 @@
   background: #fff;
 }
 
+@media screen and (max-width: 630px) {
+
+    .remodal{
+        padding: 6px;
+    }
+}
+
+
 .remodal.remodal-is-opening,
 .remodal.remodal-is-closing {
   -webkit-animation-duration: 0.3s;

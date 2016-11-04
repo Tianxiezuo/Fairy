@@ -1,0 +1,17 @@
+{
+  "name": "tree",
+  "version": "1.0.0",
+  "description": "项目状态树，组件通信，消息订阅发布",
+  "author": "gavinning",
+  "keywords": [
+    "tree",
+    "status tree",
+    "状态树",
+    "消息订阅发布"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aimeejs/tree.git",
+    "bugs": "https:/github.com/aimeejs/tree/issues"
+  }
+}
