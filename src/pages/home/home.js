@@ -25,12 +25,12 @@ class home extends Page {
     }
 
     onload() {
-
+        
     }
 
     prerender(data) {
         this.exports('header')
-        // this.exports('list')
+        this.exports('list')
         this.exports('picture')
     }
 
