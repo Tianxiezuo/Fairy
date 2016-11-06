@@ -16,11 +16,10 @@ class picture extends App {
         super();
         this.name = 'picture';
         this.template = template;
-        this.dialog = aimee.$('img.imgs').remodal();
     }
 
     onload() {
-        
+        console.log(window.innerHeight)
     }
 
     prerender(app) {
@@ -28,22 +27,31 @@ class picture extends App {
     }
 
     postrender(app) {
-
+        // 初始化dialog
+        this.dialog = this.getApp().remodal();
     }
 
-    // 页面渲染到浏览器后执行，此时可以获取宽高等与尺寸相关的属性
     pagerender(app) {
+        // 订阅list.app imageClick消息
         tree.on('list.imageClick', url => {
-            // this.update(url).show();
-            // aimee.app.dialog.update(this.getApp()).open();
-            this.update(url);
+            this.update(url).autoscreen().show();
             this.dialog.open();
         })
     }
 
-    update(url) {
-        this.dialog.$modal.attr('src', url);
+    autoscreen() {
+        // 限制图片最大高度
+        this.find('.current').css('max-height', window.innerHeight - 30);
         return this;
+    }
+
+    update(url) {
+        this.find('.current').attr('src', url);
+        return this;
+    }
+
+    show() {
+        this.getApp().css('display', 'inline-block');
     }
 }
 

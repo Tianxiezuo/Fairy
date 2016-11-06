@@ -12,7 +12,7 @@ aimee = require('aimee');
 router = require('router');
 
 aimee
-    .reg('remodal');
+    .reg('remodal')
     // .reg('dialog');
 
 router

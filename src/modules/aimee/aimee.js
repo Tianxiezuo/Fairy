@@ -73,8 +73,6 @@ class Aimee extends Base {
             }
         }
 
-        if(id === 'dialog') console.log(App)
-
         // 检查App是否是widget-app
         // eg: autoscreen
         if(!App.aimee){
