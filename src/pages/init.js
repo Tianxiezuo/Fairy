@@ -15,6 +15,7 @@ aimee
     .reg('remodal')
     // .reg('dialog');
 
+
 router
     .option('pages/home')
     .action();

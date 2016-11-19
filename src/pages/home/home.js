@@ -19,18 +19,19 @@ class home extends Page {
 
     get ajaxconfig() {
         return {
-            url: '/tmp/test.json',
+            url: null,//'http://192.168.0.110/test4.php?pageNo=1&pageSize=100',
             dataType: 'json'
         }
     }
 
     onload() {
-        
+
     }
 
     prerender(data) {
+        console.log(data)
         this.exports('header')
-        this.exports('list')
+        this.exports('list', data.data)
         this.exports('picture')
     }
 

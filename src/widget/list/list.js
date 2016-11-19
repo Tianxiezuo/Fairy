@@ -27,19 +27,18 @@ class list extends App {
             itemSelector: '.grid-item',
             gutter: 10
         };
-        // 默认Dialog弹层
-        // this.dialog = aimee.$('img.pic').remodal();
     }
 
     prerender(app) {
         this.grid = this.getApp();
 
+        tree.fire('list.data', this.getData());
+
         this.bind({
             'click@.pic': function(){
-                let url = this.getAttribute('data-src');
-                tree.fire('list.imageClick', url);
-                // app.dialog.$modal.attr('src', url);
-                // app.dialog.open();
+                let url = this.getAttribute('src');
+                let listIndex = this.getAttribute('data-list');
+                tree.fire('list.imageClick', url, Number(listIndex));
             }
         })
     }
@@ -91,7 +90,7 @@ class list extends App {
         // Grid的列数
         let column = Math.floor(inner/this.liWidth);
         // Grid列宽
-        let columnWidth = (inner - (column+1) * gutter)/column;
+        let columnWidth = (inner - (column-1) * gutter)/column;
         this.find('.grid-item').css('width', columnWidth);
     }
 

@@ -1,8 +1,8 @@
 .lincoapp-list
     ul.grid
-        each item in list
+        each item, i in list
             li.grid-item
                 .u-img
-                    img.pic(src= item.small, data-src= item.img alt="")
+                    img.pic(src= item.img, data-list= i, alt="")
                 
         

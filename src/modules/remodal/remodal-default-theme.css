@@ -46,7 +46,7 @@
 /* Default theme styles of the wrapper */
 
 .remodal-wrapper {
-  padding: 10px 10px 0;
+  /*padding: 10px 10px 0;*/
 }
 
 /* Default theme styles of the modal dialog */
@@ -54,8 +54,8 @@
 .remodal {
   box-sizing: border-box;
   /*width: 100%;*/
-  margin-bottom: 10px;
-  padding: 16px;
+  /*margin-bottom: 10px;*/
+  /*padding: 16px;*/
 
   max-width: 90%;
   max-height: 90%;
