@@ -13,6 +13,7 @@ router = require('router');
 
 aimee
     .reg('remodal')
+    .reg('jqPaginator')
     // .reg('dialog');
 
 

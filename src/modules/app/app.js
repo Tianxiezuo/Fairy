@@ -322,6 +322,32 @@ class App extends Base {
     pagerender(app) {
         return this
     }
+
+    // ajax
+    get(url) {
+        return this.ajax({
+            url: url,
+            type: 'GET'
+        })
+    }
+
+    post(url) {
+        return this.ajax({
+            url: url,
+            type: 'POST'
+        })
+    }
+
+    ajax(option) {
+        return new Promise((res, rej) => {
+            $.ajax({
+                url: option.url,
+                type: option.type,
+                success: res,
+                error: rej
+            })
+        })
+    }
 }
 
 App.aimee = { app: true }

@@ -15,11 +15,16 @@ class home extends Page {
         super();
         this.name = 'home';
         this.template = template;
+        this.pageno = 1;
+        this.pagesize = 50;
+        this.hostname = '192.168.0.104';
+        this.pathname = '/test3.php';
+        this.host = 'http://' + this.hostname;
     }
 
     get ajaxconfig() {
         return {
-            url: null,//'http://192.168.0.110/test4.php?pageNo=1&pageSize=100',
+            url: `${this.host}/test3.php?pagesize=${this.pagesize}&pageno=${this.pageno}`,
             dataType: 'json'
         }
     }
@@ -29,7 +34,8 @@ class home extends Page {
     }
 
     prerender(data) {
-        console.log(data)
+        console.log(data, 0)
+        this.formatData(data.data, this.host)
         this.exports('header')
         this.exports('list', data.data)
         this.exports('picture')
@@ -45,6 +51,16 @@ class home extends Page {
 
     leave() {
 
+    }
+
+    formatData(data, http) {
+        http = http || 'http://localhost:8080/';
+        data.list.forEach(imgs => {
+            imgs.img = http + imgs.img;
+            imgs.list.forEach((url, i) => {
+                imgs.list[i] = http + url
+            })
+        })
     }
 }
 

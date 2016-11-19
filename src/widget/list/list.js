@@ -7,6 +7,7 @@
  */
 
 import App from 'app';
+import url from 'url';
 import tree from 'tree';
 import template from 'list.jade';
 import DelayEvent from 'delayevent';
@@ -17,6 +18,10 @@ class list extends App {
         super();
         this.name = 'list';
         this.template = template;
+        this.listno = 1;
+        this.listsize = 10;
+        this.listdata = 0;
+        this.maxlistno = 0;
     }
 
     onload() {
@@ -27,17 +32,37 @@ class list extends App {
             itemSelector: '.grid-item',
             gutter: 10
         };
+
+        // 自动分页
+        this.getPages();
+        tree.fire('list.data', this.listdata);
+    }
+
+    getPages(pageno) {
+        var data = this.getData();
+        var pageno = pageno || this.listno;
+        // 分页起始位置
+        var start = Math.max(0, (pageno-1) * this.listsize);
+        // 分页终止位置
+        var end = Math.max(this.listsize, pageno * this.listsize);
+        // 检查是否已缓存数据
+        this.listdata = this.listdata || data.list;
+        // 计算最大分页
+        this.maxlistno = this.maxlistno || Math.ceil(this.listdata.length/this.listsize);
+        // 更新数据
+        data.list = this.listdata.slice(start, end);
+        // 返回最新分页数据
+        return data;
     }
 
     prerender(app) {
         this.grid = this.getApp();
 
-        tree.fire('list.data', this.getData());
-
         this.bind({
             'click@.pic': function(){
                 let url = this.getAttribute('src');
-                let listIndex = this.getAttribute('data-list');
+                let li = $(this).parents('.grid-item');
+                let listIndex = app.grid.find('li').index(li);
                 tree.fire('list.imageClick', url, Number(listIndex));
             }
         })
@@ -120,16 +145,36 @@ class list extends App {
 
     // 更新数据
     update() {
-        let dom = $(this.template(this.getData()));
-        let list = dom.find('.grid').children();
-        this.grid.append(list);
-        // 当处于瀑布流模式时，重绘瀑布流
-        if (this.gridActive) {
-            // 计算瀑布流最新数据
-            this.calcOptions();
-            // 渲染新加入的数据到瀑布流
-            this.grid.masonry('appended', list);
+        if(this.listno < this.maxlistno){
+            this.listno++;
+            let data = this.getPages(this.listno);
+            let $dom = $(this.template(data));
+            let list = $dom.find('.grid').children();
+            let imgs = data.list.map(img => img.img);
+            this.grid.find('.grid').append(list);
+            this.loadImgs(imgs).then(e => {
+                if (this.gridActive) {
+                    // 计算瀑布流最新数据
+                    this.calcOptions();
+                    // 渲染新加入的数据到瀑布流
+                    this.grid.masonry('appended', list);
+                }
+            })
         }
+        else{
+            console.log('已经是最后一页')
+        }
+    }
+
+    loadImgs(arr) {
+        var ps = arr.map(url => {
+            return new Promise((res, rej) => {
+                let img = new Image;
+                img.src = url;
+                img.onload = e => res();
+            })
+        })
+        return Promise.all(ps)
     }
 }
 

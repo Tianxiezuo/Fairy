@@ -37,6 +37,7 @@ class picture extends App {
     pagerender(app) {
         // 订阅list.app imageClick消息
         tree.on('list.imageClick', (url, listIndex) => {
+            console.log(url, listIndex)
             this.listIndex = listIndex;
             this.currentIndex = 0;
             this.update(url).autoscreen().show();
@@ -71,10 +72,11 @@ class picture extends App {
         !url || current.attr('src', url)
     }
 
+    // Goto Next Imglist
     getNextPicture() {
-        const data = this.getData();
-        const length = data.list[this.listIndex].list.length;
-        const listLength = data.list.length;
+        const list = this.getData();
+        const length = list[this.listIndex].list.length;
+        const listLength = list.length;
 
         // 切换到下一图集
         if(this.currentIndex + 1 >= length) {
@@ -87,19 +89,20 @@ class picture extends App {
             else{
                 this.listIndex += 1;
                 this.currentIndex = 0;
-                return data.list[this.listIndex].list[this.currentIndex];
+                return list[this.listIndex].list[this.currentIndex];
             }
         }
         // 图集内切换，切换到下一张
         else{
             this.currentIndex += 1;
-            return data.list[this.listIndex].list[this.currentIndex];
+            return list[this.listIndex].list[this.currentIndex];
         }
     }
 
+    // Goto Prev imglist
     getPrevPicture() {
-        const data = this.getData();
-        const length = data.list[this.listIndex].list.length;
+        const list = this.getData();
+        const length = list[this.listIndex].list.length;
 
         // 切换到上一图集
         if(this.currentIndex - 1 < 0) {
@@ -111,15 +114,15 @@ class picture extends App {
             // 切换到上个图集的最后一张图片
             else{
                 this.listIndex -= 1;
-                this.currentLength = data.list[this.listIndex].list.length;
-                this.currentIndex = data.list[this.listIndex].list.length - 1;
-                return data.list[this.listIndex].list[this.currentIndex];
+                this.currentLength = list[this.listIndex].list.length;
+                this.currentIndex = list[this.listIndex].list.length - 1;
+                return list[this.listIndex].list[this.currentIndex];
             }
         }
         // 图集内切换，切换到上一张
         else{
             this.currentIndex -= 1;
-            return data.list[this.listIndex].list[this.currentIndex];
+            return list[this.listIndex].list[this.currentIndex];
         }
     }
 }
